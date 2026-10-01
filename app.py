@@ -28,21 +28,27 @@ def encode_image_to_base64(image_path):
 st.set_page_config(page_title='Tablero Inteligente')
 st.title('Tablero Inteligente')
 with st.sidebar:
-    st.subheader("Acerca de:")
-    st.subheader("En esta aplicación veremos la capacidad que ahora tiene una máquina de interpretar un boceto")
-st.subheader("Dibuja el boceto en el panel  y presiona el botón para analizarla")
+    st.subheader("Propiedades del Tablero")
 
-# Add canvas component
-#bg_image = st.sidebar.file_uploader("Cargar Imagen:", type=["png", "jpg"])
-# Specify canvas parameters in application
-drawing_mode = "freedraw"
-stroke_width = st.sidebar.slider('Selecciona el ancho de línea', 1, 30, 5)
-#stroke_color = '#FFFFFF' # Set background color to white
-#bg_color = '#000000'
-stroke_color = "#000000" 
-bg_color = '#FFFFFF'
-#realtime_update = st.sidebar.checkbox("Update in realtime", True)
+    # Dimensiones
+    st.subheader("Dimensiones del Tablero")
+    canvas_width = st.slider("Ancho del tablero", 300, 700, 500, 50)
+    canvas_height = st.slider("Alto del tablero", 200, 600, 300, 50)
 
+    # Modo Dibujo
+    drawing_mode = st.selectbox(
+        "Herramienta de Dibujo:",
+        ("freedraw", "line", "rect", "circle", "transform", "polygon", "point"),
+    )
+
+    # Slider del Grosor
+    stroke_width = st.slider('Selecciona el ancho de línea', 1, 30, 15)
+
+    # Selector del color de linea
+    stroke_color = st.color_picker("Color de trazo", "#FFFFFF")
+
+    # Color de fondo
+    bg_color = st.color_picker("Color de fondo", "#000000")
 
 # Create a canvas component
 canvas_result = st_canvas(
