@@ -26,7 +26,7 @@ def encode_image_to_base64(image_path):
 
 # Streamlit 
 st.set_page_config(page_title='Tablero Inteligente')
-st.title('Tablero Inteligente')
+st.title('De Dibujos a Párrafos)
 with st.sidebar:
     st.subheader("Propiedades del Tablero")
 
@@ -74,7 +74,7 @@ api_key = os.environ['OPENAI_API_KEY']
 # Initialize the OpenAI client with the API key
 client = OpenAI(api_key=api_key)
 
-analyze_button = st.button("Analiza la imagen", type="secondary")
+analyze_button = st.button("Genera un párrafo", type="secondary")
 
 # Check if an image has been uploaded, if the API key is available, and if the button has been pressed
 if canvas_result.image_data is not None and api_key and analyze_button:
@@ -89,7 +89,7 @@ if canvas_result.image_data is not None and api_key and analyze_button:
  
         base64_image = encode_image_to_base64("img.png")
             
-        prompt_text = (f"Describe the image in spanish")
+        prompt_text = (f"Write a short paragraph about the image in spanish")
     
       # Create the payload for the completion request
         messages = [
