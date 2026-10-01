@@ -26,7 +26,7 @@ def encode_image_to_base64(image_path):
 
 # Streamlit 
 st.set_page_config(page_title='Tablero Inteligente')
-st.title('De Dibujos a Párrafos)
+st.title('De Dibujos a Párrafos')
 with st.sidebar:
     st.subheader("Propiedades del Tablero")
 
